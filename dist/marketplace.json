@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "refreshUrl": "https://raw.githubusercontent.com/Locaryn/plugin-music-gen/main/dist/marketplace.json",
+  "owns": [
+    "musicgen",
+    "audiocraft",
+    "stable-audio"
+  ],
+  "categories": [
+    {
+      "id": "music-generation",
+      "label": "Musique & Audio",
+      "icon": "music",
+      "matches": [
+        "music-gen"
+      ],
+      "requires": [
+        "music-gen"
+      ]
+    }
+  ],
+  "models": [
+    {
+      "id": "musicgen-small",
+      "name": "MusicGen Small",
+      "brand": "Meta AI",
+      "description": "Génération musicale haute fidélité stéréo 32kHz, rapide et légère.",
+      "license": "MIT",
+      "releaseDate": "2023-06-08",
+      "releaseYear": 2023,
+      "capabilities": [
+        "music-gen"
+      ],
+      "variants": [
+        {
+          "size": "Q4_0 · 0.3B",
+          "params": 0.3,
+          "storageGb": 0.6,
+          "quants": [
+            "q4_0"
+          ],
+          "tag": "https://huggingface.co/facebook/musicgen-small/resolve/main/model.safetensors",
+          "downloads": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 ---
 name: music-generation
-description: Compose musical tracks and sound effects from prompt descriptions.
+description: Composition musicale et création d'effets sonores instrumentaux à partir de descriptions.
 ---
 
-# Music Generation Skill
+# Compétence Composition Musicale
 
-Use `generate_music` when the user asks for music themes, background tunes, or audio effects.
+Utilisez `generate_music` lorsque l'utilisateur souhaite créer un fond sonore, un jingle, une mélodie ou un effet audio.

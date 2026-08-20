@@ -2,31 +2,72 @@
   "$schema": "https://locaryn.dev/schema/plugin.json/v0.1",
   "apiVersion": "0.1",
   "name": "plugin-music-gen",
-  "version": "1.0.0",
-  "description": "Music & sound FX generation extension (MusicGen, AudioCraft, Stable Audio).",
+  "version": "1.1.0",
+  "description": "Extension autonome de composition musicale et d'effets sonores (MusicGen, AudioCraft, Stable Audio).",
   "author": "Locaryn Team",
   "license": "Apache-2.0",
   "homepage": "https://github.com/Locaryn/plugin-music-gen",
   "repository": "https://github.com/Locaryn/plugin-music-gen",
-  "keywords": ["music-generation", "musicgen", "audiocraft", "sound-fx"],
+  "keywords": [
+    "music-generation",
+    "musicgen",
+    "audiocraft",
+    "sound-fx",
+    "audio",
+    "stable-audio"
+  ],
   "permissions": {
-    "files_read": true,
-    "files_write": true
+    "mcp": {
+      "reason": "Lancer le moteur de synthèse musicale local."
+    },
+    "files.read": {
+      "reason": "Lire les modèles musicaux et échantillons de référence."
+    },
+    "files.write": {
+      "reason": "Sauvegarder les fichiers audio WAV/MP3 générés."
+    },
+    "network": {
+      "reason": "Télécharger les modèles audio depuis HuggingFace."
+    }
   },
-  "capabilities": ["music-gen"],
+  "components": {
+    "skills": [
+      "SKILL.md"
+    ],
+    "mcp": "mcp/mcp.json"
+  },
+  "capabilities": [
+    "music-gen"
+  ],
   "ui_contributions": {
+    "slots": [
+      {
+        "id": "music-gen-catalog",
+        "slot": "marketplace.catalogs",
+        "order": 16,
+        "type": "data",
+        "label": "Modèles de composition musicale",
+        "icon": "music",
+        "entry": "dist/marketplace.json",
+        "hint": "Ajoute les modèles MusicGen et AudioCraft au catalogue"
+      },
+      {
+        "id": "music-gen-studio",
+        "slot": "studio.tabs",
+        "order": 16,
+        "label": "Musique & Audio",
+        "icon": "music",
+        "type": "custom-element",
+        "entry": "dist/ui.js",
+        "tag": "locaryn-music-gen-panel",
+        "hint": "Composition de morceaux et effets sonores"
+      }
+    ],
     "nav_items": [
       {
         "id": "studio",
         "label": "Studio de génération",
         "icon": "image"
-      }
-    ],
-    "studio_tabs": [
-      {
-        "id": "music",
-        "label": "Musique",
-        "icon": "music"
       }
     ]
   }

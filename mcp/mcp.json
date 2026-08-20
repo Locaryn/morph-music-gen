@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "music-gen": {
+      "command": "${LOCARYN_PLUGIN_ROOT}/bin/locaryn-music-gen-mcp",
+      "args": [],
+      "env": {
+        "RUST_LOG": "warn"
+      },
+      "transport": "stdio",
+      "auto_start": true
+    }
+  }
+}
