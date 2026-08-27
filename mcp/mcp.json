@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "music-gen": {
-      "command": "${LOCARYN_PLUGIN_ROOT}/bin/locaryn-music-gen-mcp",
+      "command": "${LOCARYN_MORPH_ROOT}/bin/locaryn-music-gen-mcp",
       "args": [],
       "env": {
         "RUST_LOG": "warn"
