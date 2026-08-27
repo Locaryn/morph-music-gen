@@ -1,4 +1,4 @@
-//! Stdio MCP server shipped by plugin-music-gen.
+//! Stdio MCP server shipped by morph-music-gen.
 use locaryn_plugin_music_gen::{generate_music, list_music_models, MusicGenRequest};
 use serde_json::{json, Value};
 use std::io::Write;
@@ -29,7 +29,7 @@ async fn handle_request(request: Value) -> Value {
         "initialize" => success(id, json!({
             "protocolVersion": "2025-06-18",
             "capabilities": { "tools": {} },
-            "serverInfo": { "name": "plugin-music-gen", "version": VERSION }
+            "serverInfo": { "name": "morph-music-gen", "version": VERSION }
         })),
         "tools/list" => success(id, tools_list()),
         "tools/call" => {
