@@ -1,6 +1,6 @@
 //! Locaryn Music & Audio Generation Plugin
-use std::path::{Path, PathBuf};
 use serde::{Deserialize, Serialize};
+use std::path::PathBuf;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct MusicGenRequest {
@@ -10,7 +10,9 @@ pub struct MusicGenRequest {
     pub duration_seconds: u32,
     pub output_dir: Option<PathBuf>,
 }
-fn default_duration() -> u32 { 10 }
+fn default_duration() -> u32 {
+    10
+}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct MusicGenResult {
@@ -23,7 +25,9 @@ pub fn models_dir() -> PathBuf {
     if let Ok(dir) = std::env::var("LOCARYN_EXTENSION_MODELS_DIR") {
         PathBuf::from(dir)
     } else {
-        std::env::current_dir().unwrap_or_else(|_| PathBuf::from(".")).join("models")
+        std::env::current_dir()
+            .unwrap_or_else(|_| PathBuf::from("."))
+            .join("models")
     }
 }
 
@@ -31,11 +35,15 @@ pub fn list_music_models() -> Vec<String> {
     let dir = models_dir();
     let mut models = Vec::new();
     if dir.exists() {
-        for entry in walkdir::WalkDir::new(&dir).into_iter().filter_map(|e| e.ok()) {
+        for entry in walkdir::WalkDir::new(&dir)
+            .into_iter()
+            .filter_map(|e| e.ok())
+        {
             let path = entry.path();
             if path.is_file() {
                 if let Some(ext) = path.extension().and_then(|e| e.to_str()) {
-                    if ["gguf", "safetensors", "onnx", "bin"].contains(&ext.to_lowercase().as_str()) {
+                    if ["gguf", "safetensors", "onnx", "bin"].contains(&ext.to_lowercase().as_str())
+                    {
                         if let Some(name) = path.file_name().and_then(|n| n.to_str()) {
                             models.push(name.to_string());
                         }
@@ -58,7 +66,9 @@ pub async fn generate_music(req: MusicGenRequest) -> Result<MusicGenResult, Stri
         if let Ok(media) = std::env::var("LOCARYN_EXTENSION_MEDIA_DIR") {
             PathBuf::from(media)
         } else {
-            std::env::current_dir().unwrap_or_else(|_| PathBuf::from(".")).join("output")
+            std::env::current_dir()
+                .unwrap_or_else(|_| PathBuf::from("."))
+                .join("output")
         }
     });
 
